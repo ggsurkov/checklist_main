@@ -7,10 +7,14 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-searchbar [(ngModel)]="directory"></ion-searchbar>
   <ion-list *ngFor="let userTemplateDirectory of user.userTemplateDirectories">
     <ion-list-header >
       {{userTemplateDirectory.name}}
     </ion-list-header>
-    <ion-item *ngFor="let userTemplates of userTemplateDirectory.userTemplates">{{userTemplates.name}}</ion-item>
+    <ion-item *ngFor="let userTemplate of userTemplateDirectory.userTemplates | search : directory">{{userTemplate.name}}</ion-item>
   </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>

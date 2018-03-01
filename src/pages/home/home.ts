@@ -3,7 +3,6 @@ import {NavController} from 'ionic-angular';
 import ShoppingTemplate from "../../app/model/shopping-template";
 import User from "../../app/model/users/user";
 import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
-import DefaultTemplate from "../../app/model/default-template";
 import OldCarBuyTemplate from "../../app/model/old-car-buy-template";
 
 @Component({
@@ -18,6 +17,7 @@ export class HomePage implements OnInit {
   userTemplateDirectory2: UserTemplateDirectory = new UserTemplateDirectory('Как купить б/у авто', []);
   user: User = new User(1, 'login', 'password', 'Ivan Ivanov', []);
 
+
   constructor(public navCtrl: NavController) {
 
   }
@@ -30,4 +30,7 @@ export class HomePage implements OnInit {
     this.user.userTemplateDirectories = this.user.userTemplateDirectories.concat(this.userTemplateDirectory2);
     console.log(this.user);
   }
+
+
+
 }
