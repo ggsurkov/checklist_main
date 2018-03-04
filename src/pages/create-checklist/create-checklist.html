@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create New Checklist</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Выбрать шаблон</ion-label>
+    <ion-select [(ngModel)]="userTemplateDirectoriesNameArray" interface="popover">
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label stacked>Введите имя для чеклиста</ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="addNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
+  </ion-fab>
+</ion-content>

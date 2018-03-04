@@ -4,6 +4,7 @@ import ShoppingTemplate from "../../app/model/shopping-template";
 import User from "../../app/model/users/user";
 import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
 import OldCarBuyTemplate from "../../app/model/old-car-buy-template";
+import {CreateChecklistPage} from "../create-checklist/create-checklist";
 
 @Component({
   selector: 'page-home',
@@ -28,9 +29,10 @@ export class HomePage implements OnInit {
     this.userTemplateDirectory2.userTemplates = this.userTemplateDirectory2.userTemplates.concat(this.userTemplate3);
     this.user.userTemplateDirectories = this.user.userTemplateDirectories.concat(this.userTemplateDirectory1);
     this.user.userTemplateDirectories = this.user.userTemplateDirectories.concat(this.userTemplateDirectory2);
-    console.log(this.user);
   }
 
 
-
+  createNewChecklist() {
+    this.navCtrl.push(CreateChecklistPage)
+  }
 }

@@ -7,21 +7,25 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {SearchPipe} from "../pipes/search/search";
+import {CreateChecklistPage} from "../pages/create-checklist/create-checklist";
+import {CreateChecklistPageModule} from "../pages/create-checklist/create-checklist.module";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SearchPipe
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
+    CreateChecklistPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    CreateChecklistPage
   ],
   providers: [
     StatusBar,

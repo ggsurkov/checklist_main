@@ -15,6 +15,6 @@
     <ion-item *ngFor="let userTemplate of userTemplateDirectory.userTemplates | search : directory">{{userTemplate.name}}</ion-item>
   </ion-list>
   <ion-fab right bottom>
-    <button ion-fab color="secondary"><ion-icon name="add"></ion-icon></button>
+    <button ion-fab color="secondary" (click)="createNewChecklist()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
 </ion-content>
