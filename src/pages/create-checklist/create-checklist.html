@@ -10,7 +10,10 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Выбрать шаблон</ion-label>
-    <ion-select [(ngModel)]="userTemplateDirectoriesNameArray" interface="popover">
+    <ion-select [(ngModel)]="templateSelect" interface="popover">
+      <ion-option value="defaultChecklist">Стандартный чеклист</ion-option>
+      <ion-option value="shoppingChecklist">Список покупок</ion-option>
+      <ion-option value="oldCarBuyChecklist">Как купить б/у авто</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

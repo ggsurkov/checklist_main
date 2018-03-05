@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import {SearchPipe} from "../pipes/search/search";
 import {CreateChecklistPage} from "../pages/create-checklist/create-checklist";
 import {CreateChecklistPageModule} from "../pages/create-checklist/create-checklist.module";
+import {ManagerChecklistPageModule} from "../pages/manager-checklist/manager-checklist.module";
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {CreateChecklistPageModule} from "../pages/create-checklist/create-checkl
   imports: [
     BrowserModule,
     CreateChecklistPageModule,
+    ManagerChecklistPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

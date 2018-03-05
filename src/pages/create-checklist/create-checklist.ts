@@ -5,6 +5,7 @@ import OldCarBuyTemplate from "../../app/model/old-car-buy-template";
 import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
 import User from "../../app/model/users/user";
 import DefaultTemplate from "../../app/model/default-template";
+import {ManagerChecklistPage} from "../manager-checklist/manager-checklist";
 
 @IonicPage()
 @Component({
@@ -12,10 +13,7 @@ import DefaultTemplate from "../../app/model/default-template";
   templateUrl: 'create-checklist.html',
 })
 export class CreateChecklistPage {
-  userTemplateDirectoriesNameArray: any = {
-    'templates': ['1','2']
-  };
-
+  templateSelect: string = 'defaultChecklist';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -26,6 +24,7 @@ export class CreateChecklistPage {
   }
 
   addNewChecklist() {
-
+      this.navCtrl.push(ManagerChecklistPage, {templateName: this.templateSelect});
+    console.log(this.templateSelect);
   }
 }
