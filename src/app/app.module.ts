@@ -7,9 +7,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import {SearchPipe} from "../pipes/search/search";
-import {CreateChecklistPage} from "../pages/create-checklist/create-checklist";
 import {CreateChecklistPageModule} from "../pages/create-checklist/create-checklist.module";
-import {ManagerChecklistPageModule} from "../pages/manager-checklist/manager-checklist.module";
+import {ShoppingChecklistPageModule} from "../pages/checklists/shopping-checklist/shopping-checklist.module";
+import {OldCarBuyChecklistPageModule} from "../pages/checklists/old-car-buy-checklist/old-car-buy-checklist.module";
 
 @NgModule({
   declarations: [
@@ -20,14 +20,14 @@ import {ManagerChecklistPageModule} from "../pages/manager-checklist/manager-che
   imports: [
     BrowserModule,
     CreateChecklistPageModule,
-    ManagerChecklistPageModule,
+    ShoppingChecklistPageModule,
+    OldCarBuyChecklistPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    CreateChecklistPage
   ],
   providers: [
     StatusBar,

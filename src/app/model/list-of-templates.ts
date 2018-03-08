@@ -1,6 +1,7 @@
 
 import OldCarBuyTemplate from "./templates/old-car-buy-template";
 import ShoppingTemplate from "./templates/shopping-template";
+import TutorialTemplate from "./templates/tutorial-template";
 
 export default class ListOfTemplates {
   public templates: any[];
@@ -14,7 +15,7 @@ export default class ListOfTemplates {
     (
       [
         OldCarBuyTemplate.createEmpty(),
-        ShoppingTemplate.createEmpty()
+        ShoppingTemplate.createEmpty(),
       ]
     )
   }

@@ -18,7 +18,7 @@
       </ion-list>
     </ion-slide>
     <ion-slide *ngIf="currentTemplate[0].listOfCheckBox.length !== 0">
-      <button ion-button large clear icon-end color="primary" (click)="addNewChecklist()">
+      <button ion-button large clear icon-end color="primary" (click)="addNewChecklist(currentTemplate[0])">
         Создать чеклист
         <ion-icon name="arrow-forward"></ion-icon>
       </button>
@@ -26,7 +26,7 @@
   </ion-slides>
   <ion-item>
     <ion-label>Шаблон</ion-label>
-    <ion-select [selectedText]="value" interface="popover">
+    <ion-select [selectedText]="value" interface="action-sheet">
       <ion-option (ionSelect)="findSlides(listOfTemplates.templates[0].name)" value="{{listOfTemplates.templates[0].name}}">{{listOfTemplates.templates[0].name}}</ion-option>
       <ion-option (ionSelect)="findSlides(listOfTemplates.templates[1].name)" value="{{listOfTemplates.templates[1].name}}">{{listOfTemplates.templates[1].name}}</ion-option>
     </ion-select>

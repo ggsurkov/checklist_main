@@ -13,11 +13,11 @@ import TemplateSlide from "../../app/model/template-slide";
 })
 export class HomePage implements OnInit {
   userTemplate1: ShoppingTemplate = new ShoppingTemplate(null, 'Масленица', [], new TemplateSlide
-  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']));
+  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']), 'shopping-checklist');
   userTemplate2: ShoppingTemplate = new ShoppingTemplate(null, 'Пятерочка, выходные', [], new TemplateSlide
-  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']));
+  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']), 'shopping-checklist');
   userTemplate3: OldCarBuyTemplate = new OldCarBuyTemplate(null, 'Volvo XC90 на ул. Строителей 16', [], new TemplateSlide
-  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']));
+  ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']),'shopping-checklist', null);
   userTemplateDirectory1: UserTemplateDirectory = new UserTemplateDirectory('Списки покупок', []);
   userTemplateDirectory2: UserTemplateDirectory = new UserTemplateDirectory('Как купить б/у авто', []);
   user: User = new User(1, 'login', 'password', 'Ivan Ivanov', []);

@@ -5,9 +5,10 @@ import OldCarBuyTemplate from "../../app/model/templates/old-car-buy-template";
 import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
 import User from "../../app/model/users/user";
 import DefaultTemplate from "../../app/model/templates/super-template";
-import {ManagerChecklistPage} from "../manager-checklist/manager-checklist";
 import ListOfTemplates from "../../app/model/list-of-templates";
 import TutorialTemplate from "../../app/model/templates/tutorial-template";
+import {ShoppingChecklistPage} from "../checklists/shopping-checklist/shopping-checklist";
+import {OldCarBuyChecklistPage} from "../checklists/old-car-buy-checklist/old-car-buy-checklist";
 
 @IonicPage()
 @Component({
@@ -15,7 +16,6 @@ import TutorialTemplate from "../../app/model/templates/tutorial-template";
   templateUrl: 'create-checklist.html',
 })
 export class CreateChecklistPage {
-  templateSelect: string = '';
   listOfTemplates: ListOfTemplates = ListOfTemplates.createEmpty();
   currentTemplate: any[] = [TutorialTemplate.createEmpty()];
 
@@ -26,11 +26,10 @@ export class CreateChecklistPage {
   }
 
   ionViewDidLoad() {
-
   }
 
   addNewChecklist() {
-      this.navCtrl.push(ManagerChecklistPage, {templateName: this.templateSelect});
+      this.navCtrl.push(this.currentTemplate[0].pageName);
   }
 
   findSlides(selectedTemplateName) {
