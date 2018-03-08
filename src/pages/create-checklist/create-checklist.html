@@ -5,11 +5,34 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content padding>
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <ion-list>
+        <ion-item>
+          <ion-icon name="checkmark" item-start></ion-icon>
+          Провести внешний осмотр авто
+        </ion-item>
+        <ion-item>
+          <ion-icon name="checkmark" item-start></ion-icon>
+          Найти изъяны в салоне
+        </ion-item>
+        <ion-item>
+          <ion-icon name="checkmark" item-start></ion-icon>
+          Проверить угон и "утопленника"
+        </ion-item>
+      </ion-list>
+    </ion-slide>
+    <ion-slide>
+      <button ion-button large clear icon-end color="primary" (click)="addNewChecklist()">
+        Создать чеклист
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
   <ion-item>
-    <ion-label>Выбрать шаблон</ion-label>
+    <ion-label>Шаблон</ion-label>
     <ion-select [(ngModel)]="templateSelect" interface="popover">
       <ion-option value="defaultChecklist">Стандартный чеклист</ion-option>
       <ion-option value="shoppingChecklist">Список покупок</ion-option>
@@ -21,6 +44,6 @@
     <ion-input type="text"></ion-input>
   </ion-item>
   <ion-fab right bottom>
-    <button ion-fab color="secondary" (click)="addNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
+    <button ion-fab color="primary" (click)="addNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
   </ion-fab>
 </ion-content>

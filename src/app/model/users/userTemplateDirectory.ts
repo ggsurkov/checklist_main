@@ -1,6 +1,6 @@
 
-import DefaultTemplate from "../default-template";
-import ShoppingTemplate from "../shopping-template";
+import DefaultTemplate from "../templates/default-template";
+import ShoppingTemplate from "../templates/shopping-template";
 
 export default class UserTemplateDirectory {
   public name: String;
