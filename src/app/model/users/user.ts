@@ -1,7 +1,5 @@
 
-import DefaultTemplate from "../templates/default-template";
 import UserTemplateDirectory from "./userTemplateDirectory";
-import ShoppingTemplate from "../templates/shopping-template";
 
 export default class User {
   public id: Number;

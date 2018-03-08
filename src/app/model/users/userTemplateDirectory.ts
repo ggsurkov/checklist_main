@@ -1,5 +1,4 @@
 
-import DefaultTemplate from "../templates/default-template";
 import ShoppingTemplate from "../templates/shopping-template";
 
 export default class UserTemplateDirectory {

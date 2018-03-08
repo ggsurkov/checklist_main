@@ -1,10 +1,11 @@
-import OldCarBuyTemplate from "./old-car-buy-template";
-import ShoppingTemplate from "./shopping-template";
+
+import OldCarBuyTemplate from "./templates/old-car-buy-template";
+import ShoppingTemplate from "./templates/shopping-template";
 
 export default class ListOfTemplates {
-  public templates: [];
+  public templates: any[];
 
-  constructor(templates: []) {
+  constructor(templates: any[]) {
     this.templates = templates;
   }
 
@@ -12,8 +13,8 @@ export default class ListOfTemplates {
     return new ListOfTemplates
     (
       [
-        new OldCarBuyTemplate.createEmpty(),
-        new ShoppingTemplate.createEmpty()
+        OldCarBuyTemplate.createEmpty(),
+        ShoppingTemplate.createEmpty()
       ]
     )
   }

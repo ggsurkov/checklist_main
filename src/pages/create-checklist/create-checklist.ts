@@ -4,9 +4,10 @@ import ShoppingTemplate from "../../app/model/templates/shopping-template";
 import OldCarBuyTemplate from "../../app/model/templates/old-car-buy-template";
 import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
 import User from "../../app/model/users/user";
-import DefaultTemplate from "../../app/model/templates/default-template";
+import DefaultTemplate from "../../app/model/templates/super-template";
 import {ManagerChecklistPage} from "../manager-checklist/manager-checklist";
-import ListOfTemplates from "../../app/model/templates/list-of-templates";
+import ListOfTemplates from "../../app/model/list-of-templates";
+import TutorialTemplate from "../../app/model/templates/tutorial-template";
 
 @IonicPage()
 @Component({
@@ -16,24 +17,12 @@ import ListOfTemplates from "../../app/model/templates/list-of-templates";
 export class CreateChecklistPage {
   templateSelect: string = '';
   listOfTemplates: ListOfTemplates = ListOfTemplates.createEmpty();
-  currentTemplate: [] = [new ShoppingTemplate.createEmpty()];
-  // slides = [
-  //   {
-  //     title: "Чеклист поможет:",
-  //     description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
-  //     image: "assets/imgs/slide-img.jpg",
-  //   },
-  //   {
-  //     title: "Функции чеклиста:",
-  //     description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-  //     image: "assets/imgs/slide-img.jpg",
-  //   }
-  // ];
+  currentTemplate: any[] = [TutorialTemplate.createEmpty()];
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   ngOnInit() {
-    console.log(this.currentTemplate);
   }
 
   ionViewDidLoad() {

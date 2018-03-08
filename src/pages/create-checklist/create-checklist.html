@@ -1,13 +1,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Create New Checklist</ion-title>
+    <ion-title>Создание нового чеклиста</ion-title>
   </ion-navbar>
 
 </ion-header>
 <ion-content padding>
-  <ion-slides pager *ngIf="currentTemplate[0]">
+  <ion-slides pager>
     <ion-slide *ngFor="let slide of currentTemplate[0].slides">
+      <span>{{currentTemplate[0].name}}</span>
       <h2 class="slide-title" [innerHTML]="slide.header"></h2>
       <ion-list>
         <ion-item *ngFor="let item of slide.list">
@@ -16,7 +17,7 @@
         </ion-item>
       </ion-list>
     </ion-slide>
-    <ion-slide>
+    <ion-slide *ngIf="currentTemplate[0].listOfCheckBox.length !== 0">
       <button ion-button large clear icon-end color="primary" (click)="addNewChecklist()">
         Создать чеклист
         <ion-icon name="arrow-forward"></ion-icon>

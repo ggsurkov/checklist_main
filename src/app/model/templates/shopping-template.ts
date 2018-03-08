@@ -1,7 +1,7 @@
-import DefaultTemplate from "./default-template";
+import SuperTemplate from "./super-template";
 import TemplateSlide from "../template-slide";
 
-export default class ShoppingTemplate extends DefaultTemplate {
+export default class ShoppingTemplate extends SuperTemplate {
 
   constructor(id, name, listOfCheckBox, slides) {
     super(id, name, listOfCheckBox, slides);
@@ -19,7 +19,7 @@ export default class ShoppingTemplate extends DefaultTemplate {
   static createEmpty() {
     return new ShoppingTemplate(null, 'Список покупок', ['Продукт 1', 'Продукт 2', 'Продукт 3'], [
       new TemplateSlide
-      ('Чеклист поможет:', ['Ничего не забыть купить!', 'Сэкономить время в магазине']),
+      ('Чеклист поможет:', ['Сэкономить время в магазине', 'Купить только нужные вещи']),
       new TemplateSlide
       ('Функции чеклиста:', ['Ничего не забыть купить!', 'Сэкономить время в магазине'])
     ]);

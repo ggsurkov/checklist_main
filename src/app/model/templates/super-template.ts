@@ -1,6 +1,6 @@
 import TemplateSlide from "../template-slide";
 
-export default abstract class DefaultTemplate {
+export default abstract class SuperTemplate {
   public id: Number;
   public name: String;
   public listOfCheckBox: String [];
