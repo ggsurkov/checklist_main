@@ -1,12 +1,12 @@
-import templateSlide from "../template-slide";
+import TemplateSlide from "../template-slide";
 
 export default abstract class DefaultTemplate {
   public id: Number;
   public name: String;
   public listOfCheckBox: String [];
-  public slides: templateSlide [];
+  public slides: TemplateSlide [];
 
-  constructor(id: Number, name: String, listOfCheckBox: String[], slides: templateSlide []) {
+  constructor(id: Number, name: String, listOfCheckBox: String[], slides: TemplateSlide []) {
     this.id = id;
     this.name = name;
     this.listOfCheckBox = listOfCheckBox;

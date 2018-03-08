@@ -6,21 +6,13 @@
 
 </ion-header>
 <ion-content padding>
-  <ion-slides pager>
-    <ion-slide *ngFor="let slide of slides">
-      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+  <ion-slides pager *ngIf="currentTemplate[0]">
+    <ion-slide *ngFor="let slide of currentTemplate[0].slides">
+      <h2 class="slide-title" [innerHTML]="slide.header"></h2>
       <ion-list>
-        <ion-item>
+        <ion-item *ngFor="let item of slide.list">
           <ion-icon name="checkmark" item-start></ion-icon>
-          Провести внешний осмотр авто
-        </ion-item>
-        <ion-item>
-          <ion-icon name="checkmark" item-start></ion-icon>
-          Найти изъяны в салоне
-        </ion-item>
-        <ion-item>
-          <ion-icon name="checkmark" item-start></ion-icon>
-          Проверить угон и "утопленника"
+          {{item}}
         </ion-item>
       </ion-list>
     </ion-slide>
@@ -33,10 +25,9 @@
   </ion-slides>
   <ion-item>
     <ion-label>Шаблон</ion-label>
-    <ion-select [(ngModel)]="templateSelect" interface="popover">
-      <ion-option value="defaultChecklist">Стандартный чеклист</ion-option>
-      <ion-option value="shoppingChecklist">Список покупок</ion-option>
-      <ion-option value="oldCarBuyChecklist">Как купить б/у авто</ion-option>
+    <ion-select [selectedText]="value" interface="popover">
+      <ion-option (ionSelect)="findSlides(listOfTemplates.templates[0].name)" value="{{listOfTemplates.templates[0].name}}">{{listOfTemplates.templates[0].name}}</ion-option>
+      <ion-option (ionSelect)="findSlides(listOfTemplates.templates[1].name)" value="{{listOfTemplates.templates[1].name}}">{{listOfTemplates.templates[1].name}}</ion-option>
     </ion-select>
   </ion-item>
   <ion-item>

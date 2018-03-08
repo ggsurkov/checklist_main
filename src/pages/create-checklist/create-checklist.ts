@@ -6,6 +6,7 @@ import UserTemplateDirectory from "../../app/model/users/userTemplateDirectory";
 import User from "../../app/model/users/user";
 import DefaultTemplate from "../../app/model/templates/default-template";
 import {ManagerChecklistPage} from "../manager-checklist/manager-checklist";
+import ListOfTemplates from "../../app/model/templates/list-of-templates";
 
 @IonicPage()
 @Component({
@@ -13,24 +14,28 @@ import {ManagerChecklistPage} from "../manager-checklist/manager-checklist";
   templateUrl: 'create-checklist.html',
 })
 export class CreateChecklistPage {
-  templateSelect: string = 'defaultChecklist';
-  slides = [
-    {
-      title: "Чеклист поможет:",
-      description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
-      image: "assets/imgs/slide-img.jpg",
-    },
-    {
-      title: "Функции чеклиста:",
-      description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
-      image: "assets/imgs/slide-img.jpg",
-    }
-  ];
+  templateSelect: string = '';
+  listOfTemplates: ListOfTemplates = ListOfTemplates.createEmpty();
+  currentTemplate: [] = [new ShoppingTemplate.createEmpty()];
+  // slides = [
+  //   {
+  //     title: "Чеклист поможет:",
+  //     description: "The <b>Ionic Component Documentation</b> showcases a number of useful components that are included out of the box with Ionic.",
+  //     image: "assets/imgs/slide-img.jpg",
+  //   },
+  //   {
+  //     title: "Функции чеклиста:",
+  //     description: "<b>Ionic Framework</b> is an open source SDK that enables developers to build high quality mobile apps with web technologies like HTML, CSS, and JavaScript.",
+  //     image: "assets/imgs/slide-img.jpg",
+  //   }
+  // ];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
   ngOnInit() {
+    console.log(this.currentTemplate);
   }
+
   ionViewDidLoad() {
 
   }
@@ -38,4 +43,9 @@ export class CreateChecklistPage {
   addNewChecklist() {
       this.navCtrl.push(ManagerChecklistPage, {templateName: this.templateSelect});
   }
+
+  findSlides(selectedTemplateName) {
+    this.currentTemplate = this.listOfTemplates.templates.filter(template => template.name === selectedTemplateName);
+  }
+
 }
