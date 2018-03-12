@@ -14,16 +14,13 @@
 
 
 <ion-content padding>
-  <ion-list inset>
-
-    <ion-item>
-      <ion-label>ФИО</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Password</ion-label>
-      <ion-input type="text"></ion-input>
+  <ion-list inset *ngFor="let checkboxOfMainInfo of checklist.mainInfo">
+    <ion-list-header *ngIf="checkboxOfMainInfo.header">
+      Инфо
+    </ion-list-header>
+    <ion-item >
+      <ion-label>{{checkboxOfMainInfo.name}}</ion-label>
+      <ion-checkbox checked="checkboxOfMainInfo."></ion-checkbox>
     </ion-item>
 
   </ion-list>

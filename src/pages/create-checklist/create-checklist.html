@@ -17,7 +17,7 @@
         </ion-item>
       </ion-list>
     </ion-slide>
-    <ion-slide *ngIf="currentTemplate[0].listOfCheckBox.length !== 0">
+    <ion-slide *ngIf="currentTemplate[0].name !== 'Подсказка'">
       <button ion-button large clear icon-end color="primary" (click)="addNewChecklist(currentTemplate[0])">
         Создать чеклист
         <ion-icon name="arrow-forward"></ion-icon>

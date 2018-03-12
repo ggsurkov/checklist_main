@@ -7,8 +7,8 @@ export default class ShoppingTemplate extends SuperTemplate {
   public pageName: Page;
   public checklistName: String;
 
-  constructor(id, name, listOfCheckBox, slides, pageName, checklistName) {
-    super(id, name, listOfCheckBox, slides);
+  constructor(id, name, slides, pageName, checklistName) {
+    super(id, name, slides);
     this.pageName = pageName;
     this.checklistName = checklistName;
   }
@@ -17,7 +17,6 @@ export default class ShoppingTemplate extends SuperTemplate {
     return new ShoppingTemplate(
       user.id,
       user.name,
-      user.listOfCheckBox,
       user.slides,
       user.pageName,
       user.checklistName,
@@ -25,7 +24,7 @@ export default class ShoppingTemplate extends SuperTemplate {
   }
 
   static createEmpty() {
-    return new ShoppingTemplate(null, 'Список покупок', ['Продукт 1', 'Продукт 2', 'Продукт 3'], [
+    return new ShoppingTemplate(null, 'Список покупок', [
       new TemplateSlide
       ('Чеклист поможет:', ['Сэкономить время в магазине', 'Купить только нужные вещи']),
       new TemplateSlide
