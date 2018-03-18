@@ -7,7 +7,7 @@ export default class OldCarBuyTemplate extends SuperTemplate {
   public pageName: Page;
   public userChecklistName: String;
   public mainInfo: String[];
-  public documents: boolean[];
+  public documents: Documents;
   public outerInspection: boolean[];
   public tyres: boolean[];
   public engine: boolean[];
@@ -72,16 +72,18 @@ export default class OldCarBuyTemplate extends SuperTemplate {
         ('Чеклист поможет:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"']),
         new TemplateSlide
         ('Функции чеклиста:', ['Провести внешний осмотр авто', 'Найти изъяны в салоне', 'Проверить угон и "утопленника"'])
-      ], OldCarBuyChecklistPage, null, [],[],[],[],[],[],[],[],[],[],[],[],'');
+      ], OldCarBuyChecklistPage, null, [], new Documents('Документы', [true, false]) ,[],[],[],[],[],[],[],[],[],[],'');
   }
 }
 
 
-class mainInfo {
-  public name: String;
+class Documents {
+  public header: String;
   public checkboxes: boolean [];
 
-  constructor(name: String, checkboxes: boolean[]) {
-
+  constructor(header: String, checkboxes: boolean[]) {
+    this.header = header;
+    this.checkboxes = checkboxes;
   }
 }
+
