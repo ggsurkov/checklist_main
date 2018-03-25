@@ -6,19 +6,19 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import {SearchPipe} from "../pipes/search/search";
 import {CreateChecklistPageModule} from "../pages/create-checklist/create-checklist.module";
 import {ShoppingChecklistPageModule} from "../pages/checklists/shopping-checklist/shopping-checklist.module";
 import {OldCarBuyChecklistPageModule} from "../pages/checklists/old-car-buy-checklist/old-car-buy-checklist.module";
+import {PipesModule} from "../pipes/pipes.module";
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    SearchPipe,
   ],
   imports: [
     BrowserModule,
+    PipesModule,
     CreateChecklistPageModule,
     ShoppingChecklistPageModule,
     OldCarBuyChecklistPageModule,

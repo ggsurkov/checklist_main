@@ -3,127 +3,163 @@
   <ion-navbar>
     <ion-title>{{checklist.name}}</ion-title>
   </ion-navbar>
+  <ion-toolbar no-border-top>
+    <ion-segment [(ngModel)]="segments">
+      <ion-segment-button value="info">
+        Инфо
+      </ion-segment-button>
+      <ion-segment-button value="checklist">
+        Чеклист
+      </ion-segment-button>
+      <ion-segment-button value="tooltip">
+        Подсказки
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>
-      Инфо
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.mainInfo">
-      <ion-input placeholder="{{item}}">{{item}}</ion-input>
-    </ion-item>
+  <div [ngSwitch]="segments">
+    <div *ngSwitchCase="'info'">
 
-  </ion-list>
-  <ion-list>
-    <ion-list-header>
-      Документы
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.documents">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      <ion-list>
+        <ion-list-header>
+          Инфо
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.mainInfo">
+          <ion-input placeholder="{{item}}">{{item}}</ion-input>
+        </ion-item>
 
-  </ion-list>
+      </ion-list>
 
-  <ion-list>
-    <ion-list-header>
-      Внешний осмотр
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.outerInspection">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+    </div>
 
-  </ion-list>
+    <div *ngSwitchCase="'checklist'">
+      <ion-list>
+        <ion-list-header>
+          Документы
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.documents">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Шины
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.tyres">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Внешний осмотр
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.outerInspection">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Двигатель
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.engine">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Шины
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.tyres">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Подвеска
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.suspension">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Двигатель
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.engine">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Интерьер
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.interior">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Подвеска
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.suspension">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Кузов
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.carBody">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Интерьер
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.interior">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Трансмиссия
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.transmission">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Кузов
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.carBody">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Тормоза
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.carBrakes">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Трансмиссия
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.transmission">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
 
-  <ion-list>
-    <ion-list-header>
-      Рулевое управление
-    </ion-list-header>
-    <ion-item *ngFor="let item of checklist.carSteering">
-      <ion-label>{{item.title}}</ion-label>
-      <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
-    </ion-item>
+      </ion-list>
 
-  </ion-list>
+      <ion-list>
+        <ion-list-header>
+          Тормоза
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.carBrakes">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list>
+        <ion-list-header>
+          Рулевое управление
+        </ion-list-header>
+        <ion-item *ngFor="let item of checklist.carSteering">
+          <ion-label>{{item.title}}</ion-label>
+          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+        </ion-item>
+
+      </ion-list>
+    </div>
+    <div *ngSwitchCase="'tooltip'">
+      <button ion-button block (click)="showTooltipWhatToBring()">Что взять с собой</button>
+      <button ion-button block (click)="showTooltipIfNoDocuments()">Если нет сервисной книжки</button>
+      <button ion-button block (click)="showTooltipMoney()">Не покупайте на последние деньги</button>
+      <button ion-button block (click)="showTooltipAutoService()">Перед покупкой загоните машину в сервис</button>
+      <button ion-button block (click)="showTooltipCheckAuto()">Проверить авто на ДТП по базе ГИБДД</button>
+
+      <div class="bottom-button">
+        <button ion-button clear (click)="goToAvtocod()">Проверить авто на "Автокод"</button>
+      </div>
+    </div>
+  </div>
+  <ion-fab right bottom>
+    <button ion-fab color="primary"><ion-icon name="checkmark"></ion-icon></button>
+  </ion-fab>
 </ion-content>
