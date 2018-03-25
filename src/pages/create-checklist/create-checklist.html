@@ -31,10 +31,6 @@
       <ion-option (ionSelect)="findSlides(listOfTemplates.templates[1].name)" value="{{listOfTemplates.templates[1].name}}">{{listOfTemplates.templates[1].name}}</ion-option>
     </ion-select>
   </ion-item>
-  <ion-item>
-    <ion-label stacked>Введите имя для чеклиста</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="addNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
   </ion-fab>
