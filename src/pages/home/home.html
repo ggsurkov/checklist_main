@@ -7,12 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar [(ngModel)]="directory"></ion-searchbar>
-  <ion-list *ngFor="let userTemplateDirectory of user.userTemplateDirectories">
-    <ion-list-header >
-      {{userTemplateDirectory.name}}
-    </ion-list-header>
-    <ion-item *ngFor="let userTemplate of userTemplateDirectory.userTemplates | search : directory">{{userTemplate.name}}</ion-item>
+  <ion-searchbar [(ngModel)]="checklists"></ion-searchbar>
+  <ion-list *ngFor="let checklist of user.userChecklists | search : checklists">
+    <ion-item>{{checklist.userChecklistName}}</ion-item>
   </ion-list>
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="createNewChecklist()"><ion-icon name="add"></ion-icon></button>

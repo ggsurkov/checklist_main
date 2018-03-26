@@ -4,9 +4,6 @@ import {Page} from "ionic-angular/navigation/nav-util";
 import {OldCarBuyChecklistPage} from "../../../pages/checklists/old-car-buy-checklist/old-car-buy-checklist";
 
 export default class OldCarBuyTemplate extends SuperTemplate {
-  public pageName: Page;
-  public userChecklistName: String;
-  public mainInfo: String[];
   public documents: Documents[];
   public outerInspection: OuterInspection[];
   public tyres: Tyres[];
@@ -19,13 +16,13 @@ export default class OldCarBuyTemplate extends SuperTemplate {
   public carSteering: CarSteering[];
   public note: String;
 
-  constructor(id, name, slides, pageName, checklistName, mainInfo,
+  constructor(id, name, slides, pageName, userChecklistName, mainInfo,
               documents, outerInspection, tyres, engine, suspension,
               interior, carBody, transmission, carBrakes, carSteering, note) {
 
-    super(id, name, slides);
+    super(id, name, slides, pageName, userChecklistName, mainInfo );
     this.pageName = pageName;
-    this.userChecklistName = checklistName;
+    this.userChecklistName = userChecklistName;
     this.mainInfo = mainInfo;
     this.documents = documents;
     this.outerInspection = outerInspection;
