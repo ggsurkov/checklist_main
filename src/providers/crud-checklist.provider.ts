@@ -5,13 +5,14 @@ import SuperTemplate from "../app/model/templates/super-template";
 @Injectable()
 
 export class CrudChecklistProvider {
-  user: User;
+  public user: User = User.createEmpty();
 
   constructor() {
 
   }
 
   saveChecklist(checklist: SuperTemplate) {
+    checklist.id = this.user.userChecklists.length + 1;
     this.user.userChecklists.push(checklist);
   }
 
@@ -51,5 +52,6 @@ export class CrudChecklistProvider {
     }
     return SecondObj
   }
+
 }
 

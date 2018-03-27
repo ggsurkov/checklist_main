@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavOptions, NavParams, ToastController} from 'ionic-angular';
 import OldCarBuyTemplate from "../../../app/model/templates/old-car-buy-template";
+import {CrudChecklistProvider} from "../../../providers/crud-checklist.provider";
+import {HomePage} from "../../home/home";
 
 
 @IonicPage()
@@ -8,13 +10,21 @@ import OldCarBuyTemplate from "../../../app/model/templates/old-car-buy-template
   selector: 'page-old-car-buy-checklist',
   templateUrl: 'old-car-buy-checklist.html',
 })
-export class OldCarBuyChecklistPage {
+export class OldCarBuyChecklistPage   {
   segments: string = "info"; // первый сегмент при загрузке чеклиста
   public checklist: OldCarBuyTemplate = OldCarBuyTemplate.createEmpty();
-  constructor( public toastCtrl: ToastController) {
+  constructor( public toastCtrl: ToastController,
+               public crudProvider: CrudChecklistProvider,
+               public navCtrl: NavController,
+               private navParams: NavParams) {
   }
 
   ionViewDidLoad() {
+  }
+  ngOnInit() {
+   if(this.navParams.get('checklist')) {
+     this.checklist = this.navParams.get('checklist');
+   }
   }
 
   showTooltipWhatToBring() {
@@ -73,5 +83,15 @@ export class OldCarBuyChecklistPage {
 
   goToAvtocod() {
     window.open('http://www.avtocod.ru', '_system', 'location=yes');
+  }
+
+  saveNewChecklist() {
+    if(this.checklist.id === null) {
+      this.crudProvider.saveChecklist(this.checklist);
+    }
+    else {
+      this.crudProvider.updateChecklist(this.checklist);
+    }
+    this.navCtrl.push(HomePage);
   }
 }

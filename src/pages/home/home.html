@@ -8,8 +8,8 @@
 
 <ion-content padding>
   <ion-searchbar [(ngModel)]="checklists"></ion-searchbar>
-  <ion-list *ngFor="let checklist of user.userChecklists | search : checklists">
-    <ion-item>{{checklist.userChecklistName}}</ion-item>
+  <ion-list *ngFor="let checklist of userChecklists | search : 'userChecklistName':checklists">
+    <ion-item (click)="editChecklist(checklist)">{{checklist.userChecklistName}}</ion-item>
   </ion-list>
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="createNewChecklist()"><ion-icon name="add"></ion-icon></button>

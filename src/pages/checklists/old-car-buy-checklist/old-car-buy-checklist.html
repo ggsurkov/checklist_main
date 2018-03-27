@@ -25,12 +25,12 @@
     <div *ngSwitchCase="'info'">
 
       <ion-list>
-        <ion-input placeholder="Задайте имя чеклисту" [(ngModel)]="userChecklistName"></ion-input>
+        <ion-input name="checklistName" placeholder="Задайте имя чеклисту" [(ngModel)]="checklist.userChecklistName" ></ion-input>
         <ion-list-header>
           Инфо
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.mainInfo">
-          <ion-input placeholder="{{item}}">{{item}}</ion-input>
+        <ion-item *ngFor="let item of checklist.mainInfo; let i = index">
+          <ion-input name="mainInfo{{i}}" [(ngModel)]="checklist.mainInfo[i]" placeholder="{{item}}"></ion-input>
         </ion-item>
 
       </ion-list>
@@ -42,9 +42,9 @@
         <ion-list-header>
           Документы
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.documents">
+        <ion-item *ngFor="let item of checklist.documents; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="documents{{i}}" [(ngModel)]="checklist.documents[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -53,9 +53,9 @@
         <ion-list-header>
           Внешний осмотр
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.outerInspection">
+        <ion-item *ngFor="let item of checklist.outerInspection; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="outerInspection{{i}}" [(ngModel)]="checklist.outerInspection[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -64,9 +64,9 @@
         <ion-list-header>
           Шины
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.tyres">
+        <ion-item *ngFor="let item of checklist.tyres; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="tyres{{i}}" [(ngModel)]="checklist.tyres[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -75,9 +75,9 @@
         <ion-list-header>
           Двигатель
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.engine">
+        <ion-item *ngFor="let item of checklist.engine; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="engine{{i}}" [(ngModel)]="checklist.engine[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -86,9 +86,9 @@
         <ion-list-header>
           Подвеска
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.suspension">
+        <ion-item *ngFor="let item of checklist.suspension; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="suspension{{i}}" [(ngModel)]="checklist.suspension[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -97,9 +97,9 @@
         <ion-list-header>
           Интерьер
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.interior">
+        <ion-item *ngFor="let item of checklist.interior; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="interior{{i}}" [(ngModel)]="checklist.interior[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -108,9 +108,9 @@
         <ion-list-header>
           Кузов
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carBody">
+        <ion-item *ngFor="let item of checklist.carBody; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="carBody{{i}}" [(ngModel)]="checklist.carBody[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -119,9 +119,9 @@
         <ion-list-header>
           Трансмиссия
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.transmission">
+        <ion-item *ngFor="let item of checklist.transmission; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="transmission{{i}}" [(ngModel)]="checklist.transmission[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -130,9 +130,9 @@
         <ion-list-header>
           Тормоза
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carBrakes">
+        <ion-item *ngFor="let item of checklist.carBrakes; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="carBrakes{{i}}" [(ngModel)]="checklist.carBrakes[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -141,9 +141,9 @@
         <ion-list-header>
           Рулевое управление
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carSteering">
+        <ion-item *ngFor="let item of checklist.carSteering; let i = index">
           <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox [checked]="item.checkboxe"></ion-checkbox>
+          <ion-checkbox name="carSteering{{i}}" [(ngModel)]="checklist.carSteering[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -161,6 +161,6 @@
     </div>
   </div>
   <ion-fab right bottom>
-    <button ion-fab color="primary"><ion-icon name="checkmark"></ion-icon></button>
+    <button ion-fab color="primary" (click)="saveNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
   </ion-fab>
 </ion-content>

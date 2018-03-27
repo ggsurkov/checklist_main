@@ -9,6 +9,8 @@ import {CreateChecklistPageModule} from "../pages/create-checklist/create-checkl
 import {ShoppingChecklistPageModule} from "../pages/checklists/shopping-checklist/shopping-checklist.module";
 import {OldCarBuyChecklistPageModule} from "../pages/checklists/old-car-buy-checklist/old-car-buy-checklist.module";
 import {PipesModule} from "../pipes/pipes.module";
+import {CrudChecklistProvider} from "../providers/crud-checklist.provider";
+import {UserProvider} from "../providers/user.provider";
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import {PipesModule} from "../pipes/pipes.module";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CrudChecklistProvider,
+    UserProvider
   ]
 })
 export class AppModule {}
