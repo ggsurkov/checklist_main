@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavController} from 'ionic-angular';
+import {AlertController, NavController} from 'ionic-angular';
 import ShoppingTemplate from "../../app/model/templates/shopping-template";
 import User from "../../app/model/users/user";
 import OldCarBuyTemplate from "../../app/model/templates/old-car-buy-template";
@@ -17,18 +17,39 @@ export class HomePage implements OnInit {
   public userChecklists: SuperTemplate[] = [];
 
   constructor(public navCtrl: NavController,
-              public crudProvider: CrudChecklistProvider) {
+              public crudProvider: CrudChecklistProvider,
+              public alertCtrl: AlertController) {
   }
 
   ngOnInit() {
-   this.userChecklists = this.crudProvider.loadChecklistFromUser()
+    this.userChecklists = this.crudProvider.loadChecklistFromUser()
   }
 
 
   createNewChecklist() {
     this.navCtrl.push(CreateChecklistPage)
   }
+
   editChecklist(checklist) {
     this.navCtrl.push(checklist.pageName, {checklist: checklist})
+  }
+
+  openModalDeleteChecklist(checklist) {
+    let alert = this.alertCtrl.create({
+      message: 'Удалить чеклист?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+        },
+        {
+          text: 'Ok',
+          handler: () => {
+            this.crudProvider.deleteChecklist(checklist);
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 }
