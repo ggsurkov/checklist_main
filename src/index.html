@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
+
   <meta charset="UTF-8">
   <title>Ionic App</title>
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -26,7 +27,19 @@
         .catch(err => console.error('Error', err));
     }
   </script>-->
-
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyCMSIjVY646doLhhIk4Kj7AN_fINasgAXE",
+      authDomain: "checklist-1-9bb0f.firebaseapp.com",
+      databaseURL: "https://checklist-1-9bb0f.firebaseio.com",
+      projectId: "checklist-1-9bb0f",
+      storageBucket: "",
+      messagingSenderId: "602522741688"
+    };
+    firebase.initializeApp(config);
+  </script>
   <link href="build/main.css" rel="stylesheet" >
 
 </head>
