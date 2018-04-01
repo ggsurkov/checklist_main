@@ -1,30 +1,37 @@
 import {Component, OnInit} from '@angular/core';
 import {AlertController, NavController} from 'ionic-angular';
-import ShoppingTemplate from "../../app/model/templates/shopping-template";
-import User from "../../app/model/users/user";
 import OldCarBuyTemplate from "../../app/model/templates/old-car-buy-template";
 import {CreateChecklistPage} from "../create-checklist/create-checklist";
-import TemplateSlide from "../../app/model/template-slide";
-import {UserProvider} from "../../providers/user.provider";
 import {CrudChecklistProvider} from "../../providers/crud-checklist.provider";
 import SuperTemplate from "../../app/model/templates/super-template";
+
+declare let require: any;
+const localforage: LocalForage = require("localforage");
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage implements OnInit {
-  public userChecklists: SuperTemplate[] = [];
+  userChecklistFromStorage: SuperTemplate[];
 
   constructor(public navCtrl: NavController,
               public crudProvider: CrudChecklistProvider,
               public alertCtrl: AlertController) {
   }
 
+
   ngOnInit() {
-    this.userChecklists = this.crudProvider.loadChecklistFromUser()
+    this.loadChecklistFromUser();
   }
 
+  loadChecklistFromUser() {
+    localforage.getItem("checklist").then((result) => {
+      this.userChecklistFromStorage = result ? <Array<SuperTemplate>> result : [];
+    }, (error) => {
+      console.log("ERROR: ", error);
+    });
+  }
 
   createNewChecklist() {
     this.navCtrl.push(CreateChecklistPage)
@@ -46,10 +53,22 @@ export class HomePage implements OnInit {
           text: 'Ok',
           handler: () => {
             this.crudProvider.deleteChecklist(checklist);
+            this.loadChecklistFromUser();
           }
         }
       ]
     });
     alert.present();
   }
+
+  resetLocalStorage() {
+    localforage.clear().then(function () {
+      // Run this code once the database has been entirely deleted.
+      console.log('Database is now empty.');
+    }).catch(function (err) {
+      // This code runs if there were any errors
+      console.log(err);
+    });
+  }
+
 }

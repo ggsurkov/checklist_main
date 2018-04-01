@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import ListOfTemplates from "../../app/model/list-of-templates";
 import TutorialTemplate from "../../app/model/templates/tutorial-template";
 
+
+
 @IonicPage()
 @Component({
   selector: 'page-create-checklist',

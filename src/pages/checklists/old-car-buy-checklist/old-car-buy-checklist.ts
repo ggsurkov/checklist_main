@@ -3,6 +3,10 @@ import {IonicPage, NavController, NavOptions, NavParams, ToastController} from '
 import OldCarBuyTemplate from "../../../app/model/templates/old-car-buy-template";
 import {CrudChecklistProvider} from "../../../providers/crud-checklist.provider";
 import {HomePage} from "../../home/home";
+import {Md5} from "ts-md5";
+import SuperTemplate from "../../../app/model/templates/super-template";
+declare let require: any;
+const localforage: LocalForage = require("localforage");
 
 
 @IonicPage()
@@ -12,12 +16,15 @@ import {HomePage} from "../../home/home";
 })
 export class OldCarBuyChecklistPage   {
   segments: string = "info"; // первый сегмент при загрузке чеклиста
+  public userChecklistFromStorage: SuperTemplate[] = [];
   public checklist: OldCarBuyTemplate = OldCarBuyTemplate.createEmpty();
   constructor( public toastCtrl: ToastController,
                public crudProvider: CrudChecklistProvider,
                public navCtrl: NavController,
-               private navParams: NavParams) {
+               private navParams: NavParams,
+               private _md5: Md5) {
   }
+
 
   ionViewDidLoad() {
   }
@@ -94,4 +101,6 @@ export class OldCarBuyChecklistPage   {
     }
     this.navCtrl.push(HomePage);
   }
+
+
 }

@@ -11,6 +11,7 @@ import {OldCarBuyChecklistPageModule} from "../pages/checklists/old-car-buy-chec
 import {PipesModule} from "../pipes/pipes.module";
 import {CrudChecklistProvider} from "../providers/crud-checklist.provider";
 import {UserProvider} from "../providers/user.provider";
+import {Md5} from "ts-md5";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {UserProvider} from "../providers/user.provider";
   providers: [
     StatusBar,
     SplashScreen,
+    Md5,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CrudChecklistProvider,
     UserProvider
