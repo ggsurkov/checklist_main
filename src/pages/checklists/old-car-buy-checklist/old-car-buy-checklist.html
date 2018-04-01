@@ -25,12 +25,35 @@
     <div *ngSwitchCase="'info'">
 
       <ion-list>
-        <ion-input name="checklistName" placeholder="Задайте имя чеклисту" [(ngModel)]="checklist.userChecklistName" ></ion-input>
+        <ion-input name="checklistName" placeholder="Задайте имя чеклисту"
+                   [(ngModel)]="checklist.userChecklistName"></ion-input>
         <ion-list-header>
           Инфо
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.mainInfo; let i = index">
-          <ion-input name="mainInfo{{i}}" [(ngModel)]="checklist.mainInfo[i]" placeholder="{{item}}"></ion-input>
+        <ion-item>
+          <ion-input name="masterLastName" [(ngModel)]="checklist.mainInfo.masterLastName"
+                     placeholder="ФИО Владельца"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input type="phone" name="masterPhone" [(ngModel)]="checklist.mainInfo.masterPhone"
+                     placeholder="Телефон Владельца"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="placeOfMeeting" [(ngModel)]="checklist.mainInfo.placeOfMeeting"
+                     placeholder="Место встречи"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="carBrand" [(ngModel)]="checklist.mainInfo.carBrand"
+                     placeholder="Марка автомобиля"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="carAge" [(ngModel)]="checklist.mainInfo.carAge" placeholder="Год выпуска"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="carMileAge" [(ngModel)]="checklist.mainInfo.carMileAge" placeholder="Пробег"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input name="carPrice" [(ngModel)]="checklist.mainInfo.carPrice" placeholder="Цена"></ion-input>
         </ion-item>
 
       </ion-list>
@@ -42,9 +65,32 @@
         <ion-list-header>
           Документы
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.documents; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="documents{{i}}" [(ngModel)]="checklist.documents[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Проверить паспорт продавца и сверить его данные с теми, что указаны в ПТС</ion-label>
+          <ion-checkbox name="documents.checkboxe1" [(ngModel)]="checklist.documents.checkboxe1"
+                        [checked]="checklist.documents.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Оригинал ПТС – паспорта транспортного средства (без каких либо отметок) и совпадает с VIN-кодом
+            продаваемого автомобиля
+          </ion-label>
+          <ion-checkbox name="documents.checkboxe2" [(ngModel)]="checklist.documents.checkboxe2"
+                        [checked]="checklist.documents.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Найди VIN-код, проверить по нему автомобиль на юридическую частоту http://www.gibdd.ru; а так же
+            хозяина автомобиля http://fssprus.ru
+          </ion-label>
+          <ion-checkbox name="documents.checkboxe3" [(ngModel)]="checklist.documents.checkboxe3"
+                        [checked]="checklist.documents.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Наличие паспортных данных автомобиля</ion-label>
+          <ion-checkbox name="documents.checkboxe4" [(ngModel)]="checklist.documents.checkboxe4"
+                        [checked]="checklist.documents.checkboxe4"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -53,9 +99,64 @@
         <ion-list-header>
           Внешний осмотр
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.outerInspection; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="outerInspection{{i}}" [(ngModel)]="checklist.outerInspection[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Ветровое стекло без повреждений и трещин</ion-label>
+          <ion-checkbox name="outerInspection1" [(ngModel)]="checklist.outerInspection.checkboxe1"
+                        [checked]="checklist.outerInspection.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Цвета всех панелей кузова совпадают</ion-label>
+          <ion-checkbox name="outerInspection2" [(ngModel)]="checklist.outerInspection.checkboxe2"
+                        [checked]="checklist.outerInspection.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Магнит притягивается ко всем стальным панелям</ion-label>
+          <ion-checkbox name="outerInspection3" [(ngModel)]="checklist.outerInspection.checkboxe3"
+                        [checked]="checklist.outerInspection.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Свежая краска (если есть, возможно она скрывает ржавчину)</ion-label>
+          <ion-checkbox name="outerInspection4" [(ngModel)]="checklist.outerInspection.checkboxe4"
+                        [checked]="checklist.outerInspection.checkboxe4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Зазоры багажника и капота небольшие и ровные</ion-label>
+          <ion-checkbox name="outerInspection5" [(ngModel)]="checklist.outerInspection.checkboxe5"
+                        [checked]="checklist.outerInspection.checkboxe5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Зазор между дверьми и крыльями четко выровнен</ion-label>
+          <ion-checkbox name="outerInspection6" [(ngModel)]="checklist.outerInspection.checkboxe6"
+                        [checked]="checklist.outerInspection.checkboxe6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Кузов без царапин</ion-label>
+          <ion-checkbox name="outerInspection7" [(ngModel)]="checklist.outerInspection.checkboxe7"
+                        [checked]="checklist.outerInspection.checkboxe7"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Кузов без вмятин</ion-label>
+          <ion-checkbox name="outerInspection8" [(ngModel)]="checklist.outerInspection.checkboxe8"
+                        [checked]="checklist.outerInspection.checkboxe8"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Дворники на месте и нормально функционируют</ion-label>
+          <ion-checkbox name="outerInspection9" [(ngModel)]="checklist.outerInspection.checkboxe9"
+                        [checked]="checklist.outerInspection.checkboxe9"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Фары и поворотники наповреждены и в полностью рабочем состоянии</ion-label>
+          <ion-checkbox name="outerInspection10" [(ngModel)]="checklist.outerInspection.checkboxe10"
+                        [checked]="checklist.outerInspection.checkboxe10"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -64,9 +165,36 @@
         <ion-list-header>
           Шины
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.tyres; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="tyres{{i}}" [(ngModel)]="checklist.tyres[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Шины известных брендов (Michelin, Bridgestone, Goodyear) - желательно</ion-label>
+          <ion-checkbox name="tyres1" [(ngModel)]="checklist.tyres.checkboxe1"
+                        [checked]="checklist.tyres.checkboxe1"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Все шины той же марки</ion-label>
+          <ion-checkbox name="tyres2" [(ngModel)]="checklist.tyres.checkboxe2"
+                        [checked]="checklist.tyres.checkboxe2"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Шины не имеют повреждений, порезов, пузырей или трещин</ion-label>
+          <ion-checkbox name="tyres3" [(ngModel)]="checklist.tyres.checkboxe3"
+                        [checked]="checklist.tyres.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Протектор изношен равномерно (неравномерный износ указывает на проблемы с балансировкой или подвеской)</ion-label>
+          <ion-checkbox name="tyres4" [(ngModel)]="checklist.tyres.checkboxe4"
+                        [checked]="checklist.tyres.checkboxe4"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Запасное колесо, домкрат и ключ для замены имеются в наличии (в машине) и в полностью рабочем состоянии</ion-label>
+          <ion-checkbox name="tyres5" [(ngModel)]="checklist.tyres.checkboxe5"
+                        [checked]="checklist.tyres.checkboxe5"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Запасное колесо накачано</ion-label>
+          <ion-checkbox name="tyres6" [(ngModel)]="checklist.tyres.checkboxe6"
+                        [checked]="checklist.tyres.checkboxe6"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -75,9 +203,40 @@
         <ion-list-header>
           Двигатель
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.engine; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="engine{{i}}" [(ngModel)]="checklist.engine[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Утечек жидкостей, масла или топлива не наблюдается</ion-label>
+          <ion-checkbox name="engine1" [(ngModel)]="checklist.engine.checkboxe1"
+                        [checked]="checklist.engine.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Горловина заливки масла не покрыта толстым слоем черных отложений</ion-label>
+          <ion-checkbox name="engine2" [(ngModel)]="checklist.engine.checkboxe2"
+                        [checked]="checklist.engine.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>На клеммах аккумулятора нет следов коррозии</ion-label>
+          <ion-checkbox name="engine3" [(ngModel)]="checklist.engine.checkboxe3"
+                        [checked]="checklist.engine.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>На щупе проверки масла нет темных, черных следов масла</ion-label>
+          <ion-checkbox name="engine4" [(ngModel)]="checklist.engine.checkboxe4"
+                        [checked]="checklist.engine.checkboxe4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Во время работы двигателя не ощущается посторонних запахов</ion-label>
+          <ion-checkbox name="engine5" [(ngModel)]="checklist.engine.checkboxe5"
+                        [checked]="checklist.engine.checkboxe5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Выхлопные газы не синего цвета (что указывает на сжигание масла) или черного цвета (что означает чрезмерный расход топлива)</ion-label>
+          <ion-checkbox name="engine6" [(ngModel)]="checklist.engine.checkboxe6"
+                        [checked]="checklist.engine.checkboxe6"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -86,9 +245,21 @@
         <ion-list-header>
           Подвеска
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.suspension; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="suspension{{i}}" [(ngModel)]="checklist.suspension[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Автомобиль стоит ровно</ion-label>
+          <ion-checkbox name="suspension1" [(ngModel)]="checklist.suspension.checkboxe1"
+                        [checked]="checklist.suspension.checkboxe1"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>При надавливании по углам автомобиля, нет скрипящих шумов</ion-label>
+          <ion-checkbox name="suspension2" [(ngModel)]="checklist.suspension.checkboxe2"
+                        [checked]="checklist.suspension.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>При надавливании по углам автомобиля, все реагируют одинаково</ion-label>
+          <ion-checkbox name="suspension3" [(ngModel)]="checklist.suspension.checkboxe3"
+                        [checked]="checklist.suspension.checkboxe3"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -97,20 +268,135 @@
         <ion-list-header>
           Интерьер
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.interior; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="interior{{i}}" [(ngModel)]="checklist.interior[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Сиденья неизношены и без трещин</ion-label>
+          <ion-checkbox name="interior1" [(ngModel)]="checklist.interior.checkboxe1"
+                        [checked]="checklist.interior.checkboxe1"></ion-checkbox>
         </ion-item>
 
+        <ion-item>
+          <ion-label>Все двери спокойно открываются и закрываются</ion-label>
+          <ion-checkbox name="interior2" [(ngModel)]="checklist.interior.checkboxe2"
+                        [checked]="checklist.interior.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Багажник спокойно открывается и закрываетсян</ion-label>
+          <ion-checkbox name="interior3" [(ngModel)]="checklist.interior.checkboxe3"
+                        [checked]="checklist.interior.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Отсутствует острый запах освежителя (он может указывать, что что-то скрывается)</ion-label>
+          <ion-checkbox name="interior4" [(ngModel)]="checklist.interior.checkboxe4"
+                        [checked]="checklist.interior.checkboxe4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Все датчики работают</ion-label>
+          <ion-checkbox name="interior5" [(ngModel)]="checklist.interior.checkboxe5"
+                        [checked]="checklist.interior.checkboxe5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Ни одна из сигнальных лампочек на панели приборов не горит</ion-label>
+          <ion-checkbox name="interior6" [(ngModel)]="checklist.interior.checkboxe6"
+                        [checked]="checklist.interior.checkboxe6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Аудио работает</ion-label>
+          <ion-checkbox name="interior7" [(ngModel)]="checklist.interior.checkboxe7"
+                        [checked]="checklist.interior.checkboxe7"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Обогреватель работает</ion-label>
+          <ion-checkbox name="interior8" [(ngModel)]="checklist.interior.checkboxe8"
+                        [checked]="checklist.interior.checkboxe8"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Кондиционер работает</ion-label>
+          <ion-checkbox name="interior9" [(ngModel)]="checklist.interior.checkboxe9"
+                        [checked]="checklist.interior.checkboxe9"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Дворники работают</ion-label>
+          <ion-checkbox name="interior10" [(ngModel)]="checklist.interior.checkboxe10"
+                        [checked]="checklist.interior.checkboxe10"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Омывающая жидкость стеклоочистителей нормально подается</ion-label>
+          <ion-checkbox name="interior11" [(ngModel)]="checklist.interior.checkboxe11"
+                        [checked]="checklist.interior.checkboxe11"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Все сиденья оснащены работающими ремнями безопасности</ion-label>
+          <ion-checkbox name="interior12" [(ngModel)]="checklist.interior.checkboxe12"
+                        [checked]="checklist.interior.checkboxe12"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Все сиденья нормально регулируются</ion-label>
+          <ion-checkbox name="interior13" [(ngModel)]="checklist.interior.checkboxe13"
+                        [checked]="checklist.interior.checkboxe13"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Стеклоподъемники нормально работают</ion-label>
+          <ion-checkbox name="interior14" [(ngModel)]="checklist.interior.checkboxe14"
+                        [checked]="checklist.interior.checkboxe14"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Сигнализация работает (если имеется)</ion-label>
+          <ion-checkbox name="interior15" [(ngModel)]="checklist.interior.checkboxe15"
+                        [checked]="checklist.interior.checkboxe15"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Ключ нормально запирает и отпирает багажник и дверь со стороны водителя</ion-label>
+          <ion-checkbox name="interior16" [(ngModel)]="checklist.interior.checkboxe16"
+                        [checked]="checklist.interior.checkboxe16"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Аварийные огни работают нормально</ion-label>
+          <ion-checkbox name="interior17" [(ngModel)]="checklist.interior.checkboxe17"
+                        [checked]="checklist.interior.checkboxe17"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Фары, включая подфарники и ходовые огни, работают нормально</ion-label>
+          <ion-checkbox name="interior18" [(ngModel)]="checklist.interior.checkboxe18"
+                        [checked]="checklist.interior.checkboxe18"></ion-checkbox>
+        </ion-item>
       </ion-list>
 
       <ion-list>
         <ion-list-header>
           Кузов
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carBody; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="carBody{{i}}" [(ngModel)]="checklist.carBody[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Шасси не погнуто или сломано</ion-label>
+          <ion-checkbox name="carBody1" [(ngModel)]="checklist.carBody.checkboxe1"
+                        [checked]="checklist.carBody.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Шасси не погнуто или сломано</ion-label>
+          <ion-checkbox name="carBody2" [(ngModel)]="checklist.carBody.checkboxe2"
+                        [checked]="checklist.carBody.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Шасси не погнуто или сломано</ion-label>
+          <ion-checkbox name="carBody3" [(ngModel)]="checklist.carBody.checkboxe3"
+                        [checked]="checklist.carBody.checkboxe3"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -119,9 +405,28 @@
         <ion-list-header>
           Трансмиссия
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.transmission; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="transmission{{i}}" [(ngModel)]="checklist.transmission[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Жидкость в трансмиссии выглядит чистой, без грязи или песка (что указывает на возможные внутренние проблемы в трансмиссии)</ion-label>
+          <ion-checkbox name="transmission1" [(ngModel)]="checklist.transmission.checkboxe1"
+                        [checked]="checklist.transmission.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Трансмиссия не проскальзывает и не запаздывает при вождении</ion-label>
+          <ion-checkbox name="transmission2" [(ngModel)]="checklist.transmission.checkboxe2"
+                        [checked]="checklist.transmission.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Все передачи плавно переключаются</ion-label>
+          <ion-checkbox name="transmission3" [(ngModel)]="checklist.transmission.checkboxe3"
+                        [checked]="checklist.transmission.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Нет скрежета при понижении передачи</ion-label>
+          <ion-checkbox name="transmission4" [(ngModel)]="checklist.transmission.checkboxe4"
+                        [checked]="checklist.transmission.checkboxe4"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -130,9 +435,28 @@
         <ion-list-header>
           Тормоза
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carBrakes; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="carBrakes{{i}}" [(ngModel)]="checklist.carBrakes[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>При нажатии на тормоза автомобиль продолжает двигаться прямо, не уводя ни в какую сторону</ion-label>
+          <ion-checkbox name="carBrakes1" [(ngModel)]="checklist.carBrakes.checkboxe1"
+                        [checked]="checklist.carBrakes.checkboxe1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Автомобиль свободно ставится и снимается с парковочного (стояночного) тормоза</ion-label>
+          <ion-checkbox name="carBrakes1" [(ngModel)]="checklist.carBrakes.checkboxe2"
+                        [checked]="checklist.carBrakes.checkboxe2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>При нажатии на педаль тормоза нет скрежета</ion-label>
+          <ion-checkbox name="carBrakes1" [(ngModel)]="checklist.carBrakes.checkboxe3"
+                        [checked]="checklist.carBrakes.checkboxe3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Колеса не заклинивает при применении АБС (антиблокировочная система тормозов), (если имеется)</ion-label>
+          <ion-checkbox name="carBrakes1" [(ngModel)]="checklist.carBrakes.checkboxe4"
+                        [checked]="checklist.carBrakes.checkboxe4"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -141,9 +465,25 @@
         <ion-list-header>
           Рулевое управление
         </ion-list-header>
-        <ion-item *ngFor="let item of checklist.carSteering; let i = index">
-          <ion-label>{{item.title}}</ion-label>
-          <ion-checkbox name="carSteering{{i}}" [(ngModel)]="checklist.carSteering[i].checkboxe" [checked]="item.checkboxe"></ion-checkbox>
+        <ion-item>
+          <ion-label>Автомобиль не тянет ни в одну из сторон без поворачивания руля</ion-label>
+          <ion-checkbox name="carSteering1" [(ngModel)]="checklist.carSteering.checkboxe1"
+                        [checked]="checklist.carSteering.checkboxe1"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>Автомобиль едет стабильно; нет тряски или вибрации</ion-label>
+          <ion-checkbox name="carSteering1" [(ngModel)]="checklist.carSteering.checkboxe2"
+                        [checked]="checklist.carSteering.checkboxe2"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>На рулевом колесе не ощущается сопротивления при поворотах</ion-label>
+          <ion-checkbox name="carSteering1" [(ngModel)]="checklist.carSteering.checkboxe3"
+                        [checked]="checklist.carSteering.checkboxe3"></ion-checkbox>
+        </ion-item>
+        <ion-item>
+          <ion-label>При прохождении поворотов нет щелчков или визга</ion-label>
+          <ion-checkbox name="carSteering1" [(ngModel)]="checklist.carSteering.checkboxe4"
+                        [checked]="checklist.carSteering.checkboxe4"></ion-checkbox>
         </ion-item>
 
       </ion-list>
@@ -161,6 +501,8 @@
     </div>
   </div>
   <ion-fab right bottom>
-    <button ion-fab color="primary" (click)="saveNewChecklist()"><ion-icon name="checkmark"></ion-icon></button>
+    <button ion-fab color="primary" (click)="saveNewChecklist()">
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
   </ion-fab>
 </ion-content>

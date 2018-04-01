@@ -5,8 +5,8 @@ import {Page} from "ionic-angular/navigation/nav-util";
 
 export default class ShoppingTemplate extends SuperTemplate {
 
-  constructor(id, name, slides, pageName, checklistName, mainInfo) {
-    super(id, name, slides, pageName, checklistName, mainInfo);
+  constructor(id, name, slides, pageName, checklistName) {
+    super(id, name, slides, pageName, checklistName);
   }
 
 
@@ -16,7 +16,7 @@ export default class ShoppingTemplate extends SuperTemplate {
       ('Чеклист поможет:', ['Сэкономить время в магазине', 'Купить только нужные вещи']),
       new TemplateSlide
       ('Функции чеклиста:', ['Ничего не забыть купить!', 'Сэкономить время в магазине'])
-    ], ShoppingChecklistPage, null, []);
+    ], ShoppingChecklistPage, null);
   }
 }
 

@@ -7,15 +7,13 @@ export default abstract class SuperTemplate {
   public slides: TemplateSlide [];
   public pageName: Page;
   public userChecklistName: String;
-  public mainInfo: String[];
 
-  constructor(id: Number, name: String, slides: TemplateSlide [], pageName: Page, userChecklistName: String, mainInfo: String[]) {
+  constructor(id: Number, name: String, slides: TemplateSlide [], pageName: Page, userChecklistName: String) {
     this.id = id;
     this.name = name;
     this.slides = slides;
     this.pageName = pageName;
     this.userChecklistName = userChecklistName;
-    this.mainInfo = mainInfo;
   }
 
 }
