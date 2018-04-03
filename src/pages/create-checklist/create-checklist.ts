@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import ListOfTemplates from "../../app/model/list-of-templates";
 import TutorialTemplate from "../../app/model/templates/tutorial-template";
+import SuperTemplate from "../../app/model/templates/super-template";
 
 
 
@@ -13,7 +14,7 @@ import TutorialTemplate from "../../app/model/templates/tutorial-template";
 export class CreateChecklistPage {
   listOfTemplates: ListOfTemplates = ListOfTemplates.createEmpty();
   currentTemplate: any[] = [TutorialTemplate.createEmpty()];
-
+  userChecklists: SuperTemplate[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -21,10 +22,11 @@ export class CreateChecklistPage {
   }
 
   ionViewDidLoad() {
+    this.userChecklists = this.navParams.data.userChecklists;
   }
 
   addNewChecklist() {
-      this.navCtrl.push(this.currentTemplate[0].pageName);
+      this.navCtrl.push(this.currentTemplate[0].pageName, {checklist: this.currentTemplate[0], userChecklists: this.userChecklists});
   }
 
   findSlides(selectedTemplateName) {

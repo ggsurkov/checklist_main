@@ -8,7 +8,7 @@
 
 <ion-content padding>
   <ion-searchbar [(ngModel)]="checklists"></ion-searchbar>
-  <ion-list *ngFor="let checklist of userChecklistFromStorage |  search : 'userChecklistName':checklists">
+  <ion-list *ngFor="let checklist of userChecklists |  search : 'userChecklistName':checklists">
     <div class="checklist-stroke">
       <ion-item (click)="editChecklist(checklist)">{{checklist.userChecklistName}}</ion-item>
       <ion-icon name="close" (click)="openModalDeleteChecklist(checklist)"></ion-icon>
@@ -17,9 +17,6 @@
   <ion-fab right bottom>
     <button ion-fab color="primary" (click)="createNewChecklist()"><ion-icon name="add"></ion-icon></button>
   </ion-fab>
-  <ion-row>
-    <button ion-button (click)="resetLocalStorage()">RESET LocalStorage</button>
-  </ion-row>
 
 </ion-content>
 

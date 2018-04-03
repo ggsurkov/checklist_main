@@ -26,13 +26,13 @@ export class OldCarBuyChecklistPage   {
   }
 
 
-  ionViewDidLoad() {
-  }
-  ngOnInit() {
-   if(this.navParams.get('checklist')) {
-     this.checklist = this.navParams.get('checklist');
+  ionViewDidEnter() {
+   if(this.navParams.data) {
+     this.checklist = this.navParams.data.checklist;
+     this.userChecklistFromStorage = this.navParams.data.userChecklists;
    }
   }
+
 
   showTooltipWhatToBring() {
     const toast = this.toastCtrl.create({
@@ -94,10 +94,10 @@ export class OldCarBuyChecklistPage   {
 
   saveNewChecklist() {
     if(this.checklist.id === null) {
-      this.crudProvider.saveChecklist(this.checklist);
+      this.crudProvider.saveChecklist(this.checklist,this.userChecklistFromStorage);
     }
     else {
-      this.crudProvider.updateChecklist(this.checklist);
+      this.crudProvider.updateChecklist(this.checklist,this.userChecklistFromStorage);
     }
     this.navCtrl.push(HomePage);
   }

@@ -2,17 +2,20 @@ import {Injectable} from "@angular/core";
 import User from "../app/model/users/user";
 import SuperTemplate from "../app/model/templates/super-template";
 import {Md5} from "ts-md5";
+import {Observable} from "rxjs/Observable";
+
 declare let require: any;
 const localforage: LocalForage = require("localforage");
 
 @Injectable()
 
 export class CrudChecklistProvider {
- public userChecklistFromStorage: SuperTemplate[] = [];
+  public userChecklistFromStorage: SuperTemplate[] = [];
   public user: User = User.createEmpty();
 
   constructor(private _md5: Md5) {
   }
+
   public setChecklistsToLocalStorage(checklists) {
     localforage.setItem("checklist", checklists);
   }
@@ -23,30 +26,45 @@ export class CrudChecklistProvider {
     }, (error) => {
       console.log("ERROR: ", error);
     });
-  }
-  saveChecklist(checklist) {
-    this.getChecklistsFromLocalStorage();
-    checklist.id = this._md5.appendStr('password').end();
-    this.userChecklistFromStorage.push(checklist);
-    this.setChecklistsToLocalStorage(this.userChecklistFromStorage);
+    return Observable.create((observer) => {
+      const interval = setInterval(() => {
+        observer.next(this.userChecklistFromStorage);
+        clearInterval(interval);
+      }, 50);
+    })
   }
 
-  updateChecklist(checklist: SuperTemplate) {
-    this.getChecklistsFromLocalStorage();
-    this.userChecklistFromStorage.forEach((currentChecklist) => {
+  actualChecklists(): Observable<SuperTemplate[]> {
+    return Observable.create((observer) => {
+      const interval = setInterval(() => {
+          observer.next(this.userChecklistFromStorage);
+          clearInterval(interval);
+      }, 50);
+    })
+  }
+
+  saveChecklist(checklist, userChecklistFromStorage) {
+    checklist.id = this._md5.appendStr('password').end();
+    userChecklistFromStorage.push(checklist);
+    this.setChecklistsToLocalStorage(userChecklistFromStorage);
+  }
+
+  updateChecklist(checklist: SuperTemplate, userChecklistFromStorage) {
+    userChecklistFromStorage.forEach((currentChecklist) => {
       if (currentChecklist.id === checklist.id) {
-        this.saveObject(currentChecklist,checklist);
+        this.saveObject(currentChecklist, checklist);
       }
     });
-    this.setChecklistsToLocalStorage(this.userChecklistFromStorage);
+    this.setChecklistsToLocalStorage(userChecklistFromStorage);
   }
 
 
-  deleteChecklist(checklist: SuperTemplate) {
-    this.getChecklistsFromLocalStorage();
-    this.userChecklistFromStorage.splice(this.userChecklistFromStorage.indexOf(checklist), 1);
-    this.setChecklistsToLocalStorage(this.userChecklistFromStorage);
+  deleteChecklist(checklist: SuperTemplate, userChecklistFromStorage) {
+    userChecklistFromStorage.splice(userChecklistFromStorage.indexOf(checklist), 1);
+    this.setChecklistsToLocalStorage(userChecklistFromStorage);
+    return userChecklistFromStorage;
   }
+
   cloneObject(obj) {
     let newObj = {};
 

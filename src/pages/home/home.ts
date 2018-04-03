@@ -12,33 +12,34 @@ const localforage: LocalForage = require("localforage");
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage implements OnInit {
-  userChecklistFromStorage: SuperTemplate[];
+export class HomePage {
+  userChecklists: SuperTemplate[];
 
   constructor(public navCtrl: NavController,
               public crudProvider: CrudChecklistProvider,
               public alertCtrl: AlertController) {
+
   }
 
-
-  ngOnInit() {
+  ionViewDidEnter() {
     this.loadChecklistFromUser();
   }
 
+
   loadChecklistFromUser() {
     localforage.getItem("checklist").then((result) => {
-      this.userChecklistFromStorage = result ? <Array<SuperTemplate>> result : [];
+      this.userChecklists = result ? <Array<SuperTemplate>> result : [];
     }, (error) => {
       console.log("ERROR: ", error);
     });
   }
 
   createNewChecklist() {
-    this.navCtrl.push(CreateChecklistPage)
+    this.navCtrl.push(CreateChecklistPage, {userChecklists: this.userChecklists});
   }
 
   editChecklist(checklist) {
-    this.navCtrl.push(checklist.pageName, {checklist: checklist})
+    this.navCtrl.push(checklist.pageName, {checklist: checklist, userChecklists: this.userChecklists})
   }
 
   openModalDeleteChecklist(checklist) {
@@ -52,8 +53,7 @@ export class HomePage implements OnInit {
         {
           text: 'Ok',
           handler: () => {
-            this.crudProvider.deleteChecklist(checklist);
-            this.loadChecklistFromUser();
+             this.crudProvider.deleteChecklist(checklist, this.userChecklists)
           }
         }
       ]
@@ -63,10 +63,8 @@ export class HomePage implements OnInit {
 
   resetLocalStorage() {
     localforage.clear().then(function () {
-      // Run this code once the database has been entirely deleted.
       console.log('Database is now empty.');
     }).catch(function (err) {
-      // This code runs if there were any errors
       console.log(err);
     });
   }
