@@ -1,12 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {AlertController, NavController} from 'ionic-angular';
-import OldCarBuyTemplate from "../../app/model/templates/old-car-buy-template";
 import {CreateChecklistPage} from "../create-checklist/create-checklist";
 import {CrudChecklistProvider} from "../../providers/crud-checklist.provider";
 import SuperTemplate from "../../app/model/templates/super-template";
+import localforage from 'localforage';
 
-declare let require: any;
-const localforage: LocalForage = require("localforage");
 
 @Component({
   selector: 'page-home',
@@ -18,7 +16,6 @@ export class HomePage {
   constructor(public navCtrl: NavController,
               public crudProvider: CrudChecklistProvider,
               public alertCtrl: AlertController) {
-
   }
 
   ionViewDidEnter() {
@@ -47,11 +44,11 @@ export class HomePage {
       message: 'Удалить чеклист?',
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Отмена',
           role: 'cancel',
         },
         {
-          text: 'Ok',
+          text: 'Ок',
           handler: () => {
              this.crudProvider.deleteChecklist(checklist, this.userChecklists)
           }

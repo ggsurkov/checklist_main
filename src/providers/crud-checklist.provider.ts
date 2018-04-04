@@ -4,9 +4,9 @@ import SuperTemplate from "../app/model/templates/super-template";
 import {Md5} from "ts-md5";
 import {Observable} from "rxjs/Observable";
 
-declare let require: any;
-const localforage: LocalForage = require("localforage");
-
+// declare let require: any;
+// const localforage: LocalForage = require("localforage");
+import localforage from 'localforage';
 @Injectable()
 
 export class CrudChecklistProvider {

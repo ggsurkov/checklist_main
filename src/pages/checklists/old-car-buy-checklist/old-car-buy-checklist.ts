@@ -99,7 +99,7 @@ export class OldCarBuyChecklistPage   {
     else {
       this.crudProvider.updateChecklist(this.checklist,this.userChecklistFromStorage);
     }
-    this.navCtrl.push(HomePage);
+    this.navCtrl.popToRoot();
   }
 
 

@@ -13,6 +13,9 @@ import {CrudChecklistProvider} from "../providers/crud-checklist.provider";
 import {UserProvider} from "../providers/user.provider";
 import {Md5} from "ts-md5";
 
+declare let require: any;
+const localforage: LocalForage = require("localforage");
+
 @NgModule({
   declarations: [
     MyApp,
